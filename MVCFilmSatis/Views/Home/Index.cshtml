@@ -1,0 +1,97 @@
+﻿@using MVCFilmSatis.Models
+@model HomeViewModel
+
+@section CSS{
+	<link href="~/Content/OwlCarousel/assets/owl.carousel.min.css" rel="stylesheet" />
+	<link href="~/Content/OwlCarousel/assets/owl.theme.default.min.css" rel="stylesheet" />
+}
+
+@section scripts{
+	<script src="~/Content/OwlCarousel/owl.carousel.min.js"></script>
+
+	<script>
+		$('.owl-carousel').owlCarousel({
+			items:1,
+			loop: true,
+			margin: 10,
+			nav: true,
+			autoplay: true,
+			autoplayTimeout: 2000,
+			autoplayHoverPause: true
+		})
+	</script>
+}
+
+<div class="container">
+
+	@if (User.Identity.IsAuthenticated)
+	{
+		if (User.IsInRole("Administrator"))
+		{
+			<a href="/Admin/Slider/">Manage Sliders</a>
+			<br />
+		}
+
+		<h1>Hello</h1>
+		<p>You Have <strong>@ViewBag.CartMovieCount</strong> movies in your shopping cart.</p>
+		<div>
+			<strong>@ViewBag.Error</strong>
+		</div>
+	}
+
+	<div class="row">
+		<div class="owl-carousel owl-theme">
+			@foreach (var item in Model.Sliders)
+			{
+				<div class="item">
+					<img src="@item.LargeImageURL" width="960" height="250" />
+				</div>
+			}
+
+		</div>
+	</div>
+
+	<div class="row">
+		@foreach (Movies item in Model.Movies)
+		{
+			<div class="col-md-3 column productbox Here">
+				<img src="~/Uploads/Movies/@Html.Raw(item.MovieId+".jpg")" class="img-responsive">
+				<div class="producttitle">@item.Name</div>
+				<div class="productprice">
+					<div class="pull-right">
+						<a href="/Cart/AddToCart/@item.MovieId" class="btn btn-danger btn-sm" role="button">BUY</a>
+					</div><div class="pricetext">@item.Price.ToString("C")</div>
+				</div>
+			</div>
+		}
+	</div>
+	<div class="text-center">
+		@*MVC MVP MVV Araştır !*@
+		@if (ViewBag.PrevVisible)
+		{
+			<a href="?page=@Html.Raw(ViewBag.CurrentPage-1)">Prev</a>
+		}
+		@{
+			string c = "";
+		}
+		@for (int i = ViewBag.Start; i < ViewBag.End; i++)
+		{
+			c = i == ViewBag.CurrentPage ? "active" : string.Empty;
+			<a href="?page=@i" class="@c pagination">@i</a>
+		}
+		@if (ViewBag.NextVisible)
+		{
+			<a href="?page=@Html.Raw(ViewBag.CurrentPage+1)">Next</a>
+		}
+	</div>
+
+
+	<script>
+		$('a').click(function () {
+
+			$(this).css("color", "orange");
+		});
+	</script>
+
+</div>
+

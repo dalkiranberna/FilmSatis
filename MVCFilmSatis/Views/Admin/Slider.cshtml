@@ -1,0 +1,22 @@
+﻿@using MVCFilmSatis.Models
+@model List<Slider>
+@{
+    ViewBag.Title = "Slider";
+}
+
+<h2>Slider</h2>
+
+<a href="/Admin/SliderCreate/">Create New Slider</a>
+
+<table class="table table-bordered table-striped">
+	<tr>
+		<th>Thumbnail</th> <th>Actions</th>
+	</tr>
+	@foreach (var item in Model)
+	{
+		<tr>
+			<td><img src="@item.ThumbnailURL" /></td>
+			<td><a href="/Admin/DeleteSlider/@item.SliderID">X</a></td>
+		</tr>
+	}
+</table>

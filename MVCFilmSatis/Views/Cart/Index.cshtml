@@ -1,0 +1,71 @@
+﻿@using MVCFilmSatis.Models
+<style>
+	body {
+		margin-top: 20px;
+	}
+</style>
+<div class="container">
+	<div class="row">
+		<div class="col-xs-8">
+			<div class="panel panel-info">
+				<div class="panel-heading">
+					<div class="panel-title">
+						<div class="row">
+							<div class="col-xs-6">
+								<h5><span class="glyphicon glyphicon-shopping-cart"></span> Shopping Cart</h5>
+							</div>
+							<div class="col-xs-6">
+								<button type="button" class="btn btn-primary btn-sm btn-block">
+									<span class="glyphicon glyphicon-share-alt"></span> Continue shopping
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="panel-body">
+					@foreach (Movies item in Model.Movies)
+					{
+						<div class="row">
+							<div class="col-xs-2">
+								<img class="img-responsive" src="~/Uploads/Movies/@Html.Raw(item.MovieId+".jpg")">
+							</div>
+							<div class="col-xs-4">
+								<h4 class="product-name"><strong>@item.Name</strong></h4><h4><small>@item.Description</small></h4>
+							</div>
+							<div class="col-xs-6">
+								<div class="col-xs-6 text-right">
+									<h6><strong>@item.Price.ToString("C")<span class="text-muted">x</span></strong></h6>
+								</div>
+								<div class="col-xs-4">
+									<input type="text" class="form-control input-sm" value="1" name="ProductCount">
+								</div>
+								<div class="col-xs-2">
+									<a href="/Cart/Delete/@item.MovieId" class="btn btn-link btn-xs">
+										<span class="glyphicon glyphicon-trash"> </span>
+									</a>
+								</div>
+							</div>
+						</div>
+					}
+
+					<hr>
+
+					<hr>
+
+				</div>
+				<div class="panel-footer">
+					<div class="row text-center">
+						<div class="col-xs-9">
+							<h4 class="text-right">Total <strong>$50.00</strong></h4>
+						</div>
+						<div class="col-xs-3">
+							<a href="/Cart/Checkout" type="button" class="btn btn-success btn-block">
+								Checkout
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

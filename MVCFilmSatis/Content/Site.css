@@ -1,0 +1,97 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+.productbox {
+    background-color: #ffffff;
+    padding: 10px;
+    margin-bottom: 10px;
+    -webkit-box-shadow: 0 8px 6px -6px #999;
+    -moz-box-shadow: 0 8px 6px -6px #999;
+    box-shadow: 0 8px 6px -6px #999;
+}
+
+.producttitle {
+    font-weight: bold;
+    padding: 5px 0 5px 0;
+}
+
+.productprice {
+    border-top: 1px solid #dadada;
+    padding-top: 5px;
+}
+
+.pricetext {
+    font-weight: bold;
+    font-size: 1.4em;
+}
+.pagination {
+    display: inline-block;
+    margin: 5px 15px 5px 15px; /*//ikili şekilde aynı ise sadece ilk ikisinide yazabiliriz sadece*/
+    /*iki sınıfı yazarken boşluk bırakırsak içindeki deriz yanyana dersek hem ona hem ona sahip eleman gibi olur*/
+}
+.pagination.active{
+    color:gold;
+    font-size:26px;
+}
+
+
+/*Panel tabs. bootsnipten tab olarak aldığımız html'nin css'i*/
+.panel-tabs {
+	position: relative;
+	bottom: 30px;
+	clear: both;
+	border-bottom: 1px solid transparent;
+}
+
+	.panel-tabs > li {
+		float: left;
+		margin-bottom: -1px;
+	}
+
+		.panel-tabs > li > a {
+			margin-right: 2px;
+			margin-top: 4px;
+			line-height: .85;
+			border: 1px solid transparent;
+			border-radius: 4px 4px 0 0;
+			color: #ffffff;
+		}
+
+			.panel-tabs > li > a:hover {
+				border-color: transparent;
+				color: #ffffff;
+				background-color: transparent;
+			}
+
+		.panel-tabs > li.active > a,
+		.panel-tabs > li.active > a:hover,
+		.panel-tabs > li.active > a:focus {
+			color: #fff;
+			cursor: default;
+			-webkit-border-radius: 2px;
+			-moz-border-radius: 2px;
+			border-radius: 2px;
+			background-color: rgba(255,255,255, .23);
+			border-bottom-color: transparent;
+		}
